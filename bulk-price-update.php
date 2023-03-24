@@ -4,7 +4,7 @@ Plugin Name: Bulk Price Update
 Plugin URI: https://github.com/Matthewpco/WP-Plugin-Bulk-Price-Update
 Description: A plugin that updates the price of all WooCommerce products and variations by a percentage.
 Author: Gary Matthew Payne
-Version: 1.0.0
+Version: 1.1.0
 Author URI: https://wpwebdevelopment.com
 */
 
@@ -64,6 +64,7 @@ function increase_product_price() {
                     }
                     $price = $variation->get_price();
                     if ( ! is_numeric( $price ) ) {
+                        echo '<script>console.error("Price is not numeric for variation ID ' . esc_js( $child_id ) . '");</script>';
                         continue;
                     }
                     $new_price = $price * ( 1 + ( $_POST['price_increase'] / 100 ) );
@@ -71,11 +72,14 @@ function increase_product_price() {
                     $variation->set_regular_price( $new_price );
                     $variation->set_sale_price( $new_price );
                     $variation->set_price( $new_price );
-                    $variation->save();
+                    if ( ! $variation->save() ) {
+                        echo '<script>console.error("Error saving variation ID ' . esc_js( $child_id ) . ': ' . esc_js( wc_get_notices_error_messages() ) . '");</script>';
+                    }
                 }
             } else {
                 $price = $product->get_price();
                 if ( ! is_numeric( $price ) ) {
+                    echo '<script>console.error("Price is not numeric for product ID ' . esc_js( get_the_ID() ) . '");</script>';
                     continue;
                 }
                 $new_price = $price * ( 1 + ( $_POST['price_increase'] / 100 ) );
@@ -83,9 +87,12 @@ function increase_product_price() {
                 $product->set_regular_price( $new_price );
                 $product->set_sale_price( $new_price );
                 $product->set_price( $new_price );
-                $product->save();
+                if ( ! $product->save() ) {
+                    echo '<script>console.error("Error saving product ID ' . esc_js( get_the_ID() ) . ': ' . esc_js( wc_get_notices_error_messages() ) . '");</script>';
+                }
             }
         }
     }
+
     echo '<div class="notice notice-success is-dismissible"><p>Product prices have been updated successfully.</p></div>';
 }
