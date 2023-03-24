@@ -1,4 +1,4 @@
-![](https://github.com/Matthewpco/WP-Theme-Diablo-Storefront/blob/main/d4s-landing.jpg)
+![](https://raw.githubusercontent.com/Matthewpco/WP-Plugin-Bulk-Price-Update/main/bulk-price-update-capture.jpg)
 
 # Small and precise plugin to bulk update prices for Woocommerce products.
 
@@ -18,5 +18,5 @@
 
   <br>
   
-  ![](https://github.com/Matthewpco/WP-Theme-Diablo-Storefront/blob/main/d4s-project-management.jpg)
+  ![]https://raw.githubusercontent.com/Matthewpco/WP-Plugin-Bulk-Price-Update/main/bulk-price-update-capture-2.jpg)
 
