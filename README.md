@@ -18,5 +18,5 @@
 
   <br>
   
-  ![]https://raw.githubusercontent.com/Matthewpco/WP-Plugin-Bulk-Price-Update/main/bulk-price-update-capture-2.jpg)
+  ![](https://raw.githubusercontent.com/Matthewpco/WP-Plugin-Bulk-Price-Update/main/bulk-price-update-capture-2.jpg)
 
